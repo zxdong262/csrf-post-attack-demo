@@ -12,8 +12,10 @@ cp config-sample.js config.js
 # run it
 node app
 
-#or test
-
 ```
 
-visit [http://localhost:5674(target page)](http://localhost:5675) [http://localhost:5675(attack action page)](http://localhost:5675)
+then visit 
+
+[http://localhost:5674(target page)](http://localhost:5675) 
+
+[http://localhost:5675(attack action page)](http://localhost:5675)
