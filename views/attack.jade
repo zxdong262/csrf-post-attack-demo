@@ -1,0 +1,49 @@
+doctype html
+html
+	head
+		meta(charset='UTF-8')
+		meta(http-equiv='X-UA-Compatible', content='IE=edge,chrome=1')
+		meta(name='viewport', content='width=device-width,initial-scale=1')
+		link(rel='stylesheet', href='/bootstrap/dist/css/bootstrap.min.css')
+		title csrf attack page
+	body
+		#wrapper.container
+			p
+			h1 csrf attack page
+			hr
+			p.small without auth(login), the attack do not work
+			p iframe1 for attack authed action
+			iframe(name='act1')
+			p the form1
+			form(method='POST', action='http://localhost:#{targetSitePort}/authed-action', target="act1" id="csrf-form1")
+				input(type='submit', value='submit')
+				button.btn.btn-danger.m-x-1#action1 attack authed action
+			hr
+			p iframe2 for attack authed action with csrf token defense
+			iframe(name='act2')
+			p the form2
+			form(method='POST', action='http://localhost:#{targetSitePort}/authed-action-with-csrf-validate', target="act2" id="csrf-form2")
+				input(type='submit', value='submit')
+				button.btn.btn-danger.m-x-1#action2 attack authed action with csrf token 
+			.p-y-1
+				
+				
+			.logs.p-y-1
+
+		script(src='/jquery/dist/jquery.min.js')
+		script.
+			function log(str) {
+				$('.logs').append('<p>' + str + '</p>')
+			}
+
+			$(function() {
+
+				$('#action1').click(function() {
+					$('#csrf-form1').submit()
+				})
+
+				$('#action2').click(function() {
+					$('#csrf-form2').submit()
+				})
+
+			})

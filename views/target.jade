@@ -1,0 +1,70 @@
+doctype html
+html
+	head
+		meta(charset='UTF-8')
+		meta(http-equiv='X-UA-Compatible', content='IE=edge,chrome=1')
+		meta(name='viewport', content='width=device-width,initial-scale=1')
+		link(rel='stylesheet', href='/bootstrap/dist/css/bootstrap.min.css')
+		title csrf attack target page
+	body
+		#wrapper.container
+			p
+			h1 csrf attack target page
+			hr
+			.p-y-1
+				button.btn.btn-primary#login login
+				a.btn.btn-primary#login.m-x-1(href='/logout') logout
+				p.small without auth(login), the attack do not work
+			hr
+			.p-y-1
+				button.btn.btn-danger.m-x-1#action1 do authed action
+				button.btn.btn-danger.m-x-1#action2 do authed action with csrf token 
+			.logs.p-y-1
+
+		script(src='/jquery/dist/jquery.min.js')
+		script.
+			function log(str) {
+				$('.logs').append('<p>' + str + '</p>')
+			}
+			$(function() {
+
+				var csrfToken = '#{csrf}'
+
+				$('#login').click(function() {
+					$.post('/login')
+					.done(function(res) {
+						log('logined')
+					})
+					.fail(function(e) {
+						log('login failed')
+						log(e.stack || e)
+					})
+				})
+
+				$('#action1').click(function() {
+					$.post('/authed-action')
+					.done(function(res) {
+						log('authed action response')
+						log(JSON.stringify(res))
+					})
+					.fail(function(e) {
+						log('authed action failed')
+						log(e.stack || e)
+					})
+				})
+
+				$('#action2').click(function() {
+					$.post('/authed-action-with-csrf-validate', {
+						csrf: csrfToken
+					})
+					.done(function(res) {
+						log('authed action with-csrf-validate response')
+						log(JSON.stringify(res))
+					})
+					.fail(function(e) {
+						log('authed action with-csrf-validate failed')
+						log(e.stack || e)
+					})
+				})
+
+			})
