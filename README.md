@@ -16,6 +16,6 @@ node app
 
 then visit 
 
-[http://localhost:5674(target page)](http://localhost:5675) 
+[http://localhost:5674(target page)](http://localhost:5674) 
 
 [http://localhost:5675(attack action page)](http://localhost:5675)
