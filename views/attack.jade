@@ -17,14 +17,14 @@ html
 			p the form1
 			form(method='POST', action='http://localhost:#{targetSitePort}/authed-action', target="act1" id="csrf-form1")
 				input(type='submit', value='submit')
-				button.btn.btn-danger.m-x-1#action1 attack authed action
+				button.btn.btn-danger.m-1#action1 attack authed action
 			hr
 			p iframe2 for attack authed action with csrf token defense
 			iframe(name='act2')
 			p the form2
 			form(method='POST', action='http://localhost:#{targetSitePort}/authed-action-with-csrf-validate', target="act2" id="csrf-form2")
 				input(type='submit', value='submit')
-				button.btn.btn-danger.m-x-1#action2 attack authed action with csrf token 
+				button.btn.btn-danger.m-1#action2 attack authed action with csrf token 
 			.p-y-1
 				
 				
