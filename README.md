@@ -1,4 +1,5 @@
 # csrf-post-attack-demo
+
 a simple demo show post csrf attack and csrf token defense.
 
 ## run
@@ -15,7 +16,7 @@ node app
 
 ```
 
-then visit 
+then visit (by default config)
 
 [http://localhost:5674(target page)](http://localhost:5674) 
 

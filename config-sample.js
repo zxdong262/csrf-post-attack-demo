@@ -1,7 +1,7 @@
 
 module.exports = {
-	targetSiteHost: '192.168.1.70',
+	targetSiteHost: 'localhost',
 	targetSitePort: 5674,
-	attackSiteHost: '192.168.1.70',
+	attackSiteHost: 'localhost',
 	attackSitePort: 5675
 }
